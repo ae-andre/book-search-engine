@@ -26,7 +26,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-  },
+
    login: async (parent, args, context) => {
     const user = await User.findOne({ email: args.email });
     if (!user) {
@@ -65,6 +65,7 @@ const resolvers = {
     }
     return updatedUser;
   },
+}
 };
 
 module.exports = resolvers;
