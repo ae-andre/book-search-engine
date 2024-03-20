@@ -33,7 +33,7 @@ const LoginForm = () => {
         }
       });
 
-      const { token, user } = await response.json();
+      const { token, user } = response.data.loginUser
       console.log(user);
       Auth.login(token);
     } catch (err) {
