@@ -5,6 +5,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     getSingleUser: async (parent, args, context) => {
+      console.log("test")
       const foundUser = await User.findOne({
         username: context.user.username
       });
@@ -41,11 +42,19 @@ const resolvers = {
     const token = signToken(user);
     return { token, user };
   },
-  saveBook: async (parent, args, context) => {
+  saveBook: async (parent, { authors, description, bookId, image, link, title }, context) => {
+    if (!context.user) {
+      throw new AuthenticationError('You need to be logged in!');
+    }
+  
+    if (!description || !bookId || !title) {
+      throw new Error('Description, Book ID, and Title are required.');
+    }  
+    
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: context.user._id },
-        { $addToSet: { savedBooks: args } },
+        { $addToSet: { savedBooks: { authors, description, bookId, image, link, title } } },
         { new: true, runValidators: true }
       );
       return updatedUser;

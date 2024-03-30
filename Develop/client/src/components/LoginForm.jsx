@@ -26,21 +26,24 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await loginUser({
+      const { data } = await loginUser({
         variables: {
           email: userFormData.email,
           password: userFormData.password
         }
       });
-
-      const { token, user } = response.data.loginUser
-      console.log(user);
-      Auth.login(token);
+  
+      if (data.login) {
+        Auth.login(data.login.token);
+        console.log(data.login.user);
+      } else {
+        throw new Error('Login failed'); // Handle cases where 'login' field is missing
+      }
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
-
+  
     setUserFormData({
       username: '',
       email: '',
