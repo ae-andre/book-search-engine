@@ -10,7 +10,7 @@ A search engine for looking up and saving your favorite books.
 
 [Apollo Server](https://www.npmjs.com/package/apollo-server) was used to build the GraphQL API.
 
-## Mock up
+## Mock up and Link to Deployed App
 
 [![screenshot of book search engine website](./client/src/assets/lookybooky%20mockup.jpg)](https://lookybooky-e31378cc0a42.herokuapp.com/) 
 
