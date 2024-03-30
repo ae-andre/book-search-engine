@@ -12,7 +12,7 @@ A search engine for looking up and saving your favorite books.
 
 ## Mock up
 
-[![screenshot of book search engine website](./client/src/assets/lookybooky%20mockup.jpg)(https://lookybooky-e31378cc0a42.herokuapp.com/)] 
+[![screenshot of book search engine website](./client/src/assets/lookybooky%20mockup.jpg)](https://lookybooky-e31378cc0a42.herokuapp.com/) 
 
 ## License
 
